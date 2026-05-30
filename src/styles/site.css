@@ -1,0 +1,25 @@
+/* ============================================================
+   CENTAUR — marketing site shell
+   Ported from index.html's <style> block. Imported after
+   colors_and_type.css (the token source of truth).
+   ============================================================ */
+html { scroll-behavior: smooth; }
+body { background: var(--marble); }
+#root { min-height: 100vh; }
+
+.cta-overlay {
+  position: fixed; inset: 0; z-index: 100; display: grid; place-items: center;
+  background: rgba(22, 20, 13, .5); backdrop-filter: blur(4px); animation: fade .2s ease;
+}
+@keyframes fade { from { opacity: 0 } }
+
+.cta-card {
+  width: min(440px, 92vw); background: var(--paper); border: 1px solid var(--stone-line);
+  border-top: 3px solid var(--bronze); box-shadow: var(--sh-lift); padding: 36px 36px 32px; position: relative;
+}
+.cta-input {
+  width: 100%; padding: 13px 14px; font-family: var(--f-serif); font-size: 16px;
+  background: var(--paper-2); border: 1px solid var(--stone-line); box-shadow: var(--sh-engrave);
+  border-radius: 3px; color: var(--fg-1); margin: 16px 0 18px;
+}
+.cta-input:focus { outline: 2px solid var(--bronze); outline-offset: 2px; border-color: var(--bronze); }

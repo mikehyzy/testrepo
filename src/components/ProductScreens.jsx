@@ -172,6 +172,17 @@ function Dock({ value, events }) {
         >
           {verdict}
         </div>
+        <div
+          style={{
+            fontFamily: "var(--f-mono)",
+            fontSize: 10,
+            letterSpacing: ".08em",
+            color: "var(--on-ink-3)",
+            marginTop: 10,
+          }}
+        >
+          % of session in Enhance mode
+        </div>
       </div>
 
       <div
@@ -225,17 +236,20 @@ function Dock({ value, events }) {
           padding: "13px 20px",
           borderTop: "1px solid var(--ink-line)",
           display: "flex",
-          gap: 18,
+          flexDirection: "column",
+          gap: 6,
           fontFamily: "var(--f-mono)",
           fontSize: 11,
           color: "var(--on-ink-2)",
         }}
       >
-        <span>
-          04:12 <span style={{ color: "var(--on-ink-3)" }}>with</span>
+        <span style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
+          <span style={{ color: "var(--patina-lit)", minWidth: 38 }}>04:12</span>
+          <span style={{ color: "var(--on-ink-3)" }}>writing with AI</span>
         </span>
-        <span>
-          00:38 <span style={{ color: "var(--on-ink-3)" }}>over</span>
+        <span style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
+          <span style={{ color: "var(--oxide-lit)", minWidth: 38 }}>00:38</span>
+          <span style={{ color: "var(--on-ink-3)" }}>writing over to AI</span>
         </span>
       </div>
     </aside>
@@ -267,7 +281,15 @@ function Workspace({ value, events, onLog }) {
           justifyContent: "center",
         }}
       >
-        <div style={{ width: "min(720px, 100%)", padding: "44px 56px 80px" }}>
+        <div
+          style={{
+            width: "min(720px, 100%)",
+            padding: "44px 56px 40px",
+            minHeight: "100%",
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
           <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 28 }}>
             <Icon name="file-text" size={15} color="var(--fg-3)" />
             <span
@@ -320,10 +342,7 @@ function Workspace({ value, events, onLog }) {
             }}
           >
             So the wedge is trust. We are the only vendor whose product makes the case that&nbsp;
-            <span style={{ background: "var(--patina-wash)", padding: "1px 3px", borderRadius: 2 }}>
-              using us makes you measurably sharper
-            </span>
-            , not just quicker.
+            <span style={{ background: "var(--patina-wash)", padding: "1px 3px", borderRadius: 2 }}>using us makes you measurably sharper,</span> not just quicker.
           </p>
 
           {!inserted && !dismissed && (
@@ -415,6 +434,26 @@ function Workspace({ value, events, onLog }) {
               <span style={{ color: "var(--fg-4)" }}>The cursor is yours.</span>
             </p>
           )}
+          <div
+            style={{
+              marginTop: "auto",
+              paddingTop: 40,
+              borderTop: "1px solid var(--stone-line-soft)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              fontFamily: "var(--f-mono)",
+              fontSize: 11,
+              letterSpacing: ".04em",
+              color: "var(--fg-3)",
+            }}
+          >
+            <span style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
+              <Mark size={16} />
+              Centaur watching · content never stored
+            </span>
+            <span>Draft · autosaved 09:47 · 247 words</span>
+          </div>
         </div>
       </div>
       <Dock value={value} events={events} />
