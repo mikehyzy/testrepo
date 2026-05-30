@@ -298,4 +298,232 @@ function Reg({ color = "var(--bronze)" }) {
   );
 }
 
-export { Icon, Mark, Wordmark, Eyebrow, Btn, Gauge, Chip, useCountUp, Reg };
+/* --- reveal-on-scroll with stagger --- */
+function useReveal() {
+  const ref = useRef(null);
+  useEffect(() => {
+    const els = ref.current?.querySelectorAll("[data-reveal]") || [];
+    if (REDUCED) {
+      els.forEach((el) => {
+        el.style.opacity = 1;
+        el.style.transform = "none";
+      });
+      return;
+    }
+    const io = new IntersectionObserver(
+      (ents) => {
+        ents.forEach((en) => {
+          if (en.isIntersecting) {
+            en.target.style.opacity = 1;
+            en.target.style.transform = "none";
+            io.unobserve(en.target);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+    els.forEach((el, i) => {
+      el.style.opacity = 0;
+      el.style.transform = "translateY(18px)";
+      el.style.transition = `opacity .7s var(--ease-stoic) ${i * 0.08}s, transform .7s var(--ease-stoic) ${i * 0.08}s`;
+      io.observe(el);
+    });
+    return () => io.disconnect();
+  }, []);
+  return ref;
+}
+
+/* ============================================================
+   Cross-page top nav (marketing surface).
+   ============================================================ */
+function TopNav({ active = "landing", onCta }) {
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const fn = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", fn);
+    fn();
+    return () => window.removeEventListener("scroll", fn);
+  }, []);
+  const links = [
+    { label: "The thesis", href: active === "landing" ? "#thesis" : "index.html#thesis" },
+    { label: "The instrument", href: "product.html" },
+    { label: "The evidence", href: active === "landing" ? "#evidence" : "index.html#evidence" },
+    { label: "Pricing", href: active === "landing" ? "#pricing" : "index.html#pricing" },
+  ];
+  return (
+    <header
+      style={{
+        position: "sticky",
+        top: 0,
+        zIndex: 50,
+        background: scrolled ? "rgba(236,230,218,.86)" : "transparent",
+        backdropFilter: scrolled ? "blur(10px)" : "none",
+        borderBottom: scrolled ? "1px solid var(--stone-line)" : "1px solid transparent",
+        transition: "all .3s var(--ease-stoic)",
+      }}
+    >
+      <div
+        style={{
+          maxWidth: 1180,
+          margin: "0 auto",
+          padding: "16px 40px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
+        <a href="index.html" style={{ textDecoration: "none" }}>
+          <Wordmark size={19} />
+        </a>
+        <nav style={{ display: "flex", alignItems: "center", gap: 30 }}>
+          {links.map((l) => (
+            <a
+              key={l.label}
+              href={l.href}
+              style={{
+                fontFamily: "var(--f-mono)",
+                fontSize: 12.5,
+                letterSpacing: ".04em",
+                color: "var(--fg-2)",
+                textDecoration: "none",
+                borderBottom: "1px solid transparent",
+                paddingBottom: 2,
+              }}
+            >
+              {l.label}
+            </a>
+          ))}
+          {onCta ? (
+            <Btn variant="bronze" size="sm" onClick={onCta}>
+              Keep your edge
+            </Btn>
+          ) : (
+            <Btn variant="bronze" size="sm" href="product.html">
+              See the instrument
+            </Btn>
+          )}
+        </nav>
+      </div>
+    </header>
+  );
+}
+
+/* --- Marketing footer --- */
+function SiteFooter() {
+  const cols = [
+    [
+      "Product",
+      [
+        ["The instrument", "product.html"],
+        ["The thesis", "#thesis"],
+        ["The evidence", "#evidence"],
+        ["Pricing", "#pricing"],
+      ],
+    ],
+    [
+      "Explore",
+      [
+        ["How it works", "#instrument"],
+        ["The centaur", "#thesis"],
+        ["Open the instrument", "product.html"],
+      ],
+    ],
+  ];
+  return (
+    <footer
+      style={{
+        background: "var(--ink)",
+        color: "var(--on-ink-2)",
+        padding: "72px 40px 40px",
+        borderTop: "2px solid var(--bronze)",
+      }}
+    >
+      <div style={{ maxWidth: 1120, margin: "0 auto" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 32 }}>
+          <div style={{ maxWidth: 320 }}>
+            <Wordmark size={20} tone="gilt" />
+            <p
+              style={{
+                fontFamily: "var(--f-serif)",
+                fontStyle: "italic",
+                fontSize: 15,
+                marginTop: 18,
+                color: "var(--on-ink-3)",
+              }}
+            >
+              A helper, not a master. Still the one in charge.
+            </p>
+          </div>
+          <div style={{ display: "flex", gap: 64, flexWrap: "wrap" }}>
+            {cols.map(([h, items]) => (
+              <div key={h}>
+                <Eyebrow color="var(--bronze-light)" style={{ fontSize: 10 }}>
+                  {h}
+                </Eyebrow>
+                <ul
+                  style={{
+                    listStyle: "none",
+                    padding: 0,
+                    margin: "16px 0 0",
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: 10,
+                  }}
+                >
+                  {items.map(([i, href]) => (
+                    <li key={i}>
+                      <a
+                        href={href}
+                        style={{
+                          fontFamily: "var(--f-mono)",
+                          fontSize: 12.5,
+                          color: "var(--on-ink-2)",
+                          textDecoration: "none",
+                        }}
+                      >
+                        {i}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            flexWrap: "wrap",
+            gap: 12,
+            borderTop: "1px solid var(--ink-line)",
+            marginTop: 56,
+            paddingTop: 22,
+            fontFamily: "var(--f-mono)",
+            fontSize: 10.5,
+            letterSpacing: ".06em",
+            color: "var(--on-ink-3)",
+          }}
+        >
+          <span>MENS MANET &middot; © 2040 CENTAUR</span>
+          <span>PRIVACY &middot; TERMS &middot; YOUR CONTENT IS NEVER STORED</span>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+export {
+  Icon,
+  Mark,
+  Wordmark,
+  Eyebrow,
+  Btn,
+  Gauge,
+  Chip,
+  useCountUp,
+  Reg,
+  useReveal,
+  TopNav,
+  SiteFooter,
+};

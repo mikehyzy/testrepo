@@ -72,7 +72,7 @@ function Rail({ view, setView }) {
         <Icon name="log-out" size={19} color="var(--on-ink-3)" />
         <span className="railtip">Exit to site</span>
       </a>
-      <div style={{ marginTop: 6, display: "flex", flexDirection: "column", alignItems: "center", gap: 4 }}>
+      <div className="railbtn" style={{ marginTop: 6, display: "flex", flexDirection: "column", alignItems: "center", gap: 4 }}>
         <div
           style={{
             width: 34,
@@ -88,6 +88,7 @@ function Rail({ view, setView }) {
         >
           M
         </div>
+        <span className="railtip">Marcus · your account</span>
       </div>
     </nav>
   );
