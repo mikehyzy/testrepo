@@ -1,0 +1,291 @@
+/* ============================================================
+   CENTAUR — Color & Type Foundations
+   "Adiutor, non dominus." — a helper, not a master.
+
+   The brand is half human, half machine:
+     · STONE  — warm marble, inscriptional capitals, the Stoic mind
+     · METAL  — obsidian ink, bronze gilding, monospace telemetry
+   One living signal divides the two worlds:
+     · PATINA (green) = ENHANCING   · OXIDE (red) = OFFLOADING
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,300;1,6..72,400;1,6..72,500&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+
+:root {
+  /* ---------------------------------------------------------
+     PALETTE — STONE (the human / light world)
+     --------------------------------------------------------- */
+  --marble:      #ECE6DA;   /* primary warm stone ground */
+  --marble-2:    #E1D9C9;   /* recessed stone / panel */
+  --paper:       #F6F1E7;   /* lightest leaf — cards, sheets */
+  --paper-2:     #FBF8F1;   /* paper highlight */
+  --stone-line:  #CDC3AF;   /* hairline rule on stone */
+  --stone-line-soft: #DAD1BF;
+
+  /* PALETTE — METAL (the machine / dark world) */
+  --ink:         #16140D;   /* obsidian — primary ink & dark ground */
+  --ink-2:       #211E15;   /* raised dark surface */
+  --ink-3:       #2E2A1F;   /* dark panel / hover */
+  --ink-line:    #3B3628;   /* hairline rule on ink */
+
+  /* TEXT */
+  --fg-1:        #16140D;   /* primary text on stone */
+  --fg-2:        #4A4537;   /* secondary text on stone */
+  --fg-3:        #6E6857;   /* muted / meta on stone */
+  --fg-4:        #908A77;   /* faint / disabled on stone */
+  --on-ink-1:    #F2ECDD;   /* primary text on ink */
+  --on-ink-2:    #BDB39B;   /* secondary text on ink */
+  --on-ink-3:    #8B826C;   /* muted text on ink */
+
+  /* METAL — bronze / brass (the instrument, gilding) */
+  --bronze:        #A77B43;  /* brass accent on stone */
+  --bronze-deep:   #7C5829;  /* engraved bronze */
+  --bronze-light:  #C9A86A;  /* gilt on ink (dark bg) */
+  --bronze-glow:   #E0C68A;  /* brightest gilt highlight */
+
+  /* SIGNAL — the living reading */
+  --patina:        #4C8A6F;  /* ENHANCING — aged-bronze green, the mind alive */
+  --patina-deep:   #356552;
+  --patina-lit:    #74B895;  /* on ink */
+  --patina-wash:   #DCE7DF;  /* tint fill on stone */
+
+  --oxide:         #A23E2C;  /* OFFLOADING — Pompeiian oxide red, the warning */
+  --oxide-deep:    #79271A;
+  --oxide-lit:     #CC7058;  /* on ink */
+  --oxide-wash:    #ECDBD2;  /* tint fill on stone */
+
+  --steel:         #6E6857;  /* neutral instrument grey */
+  --steel-2:       #908A77;
+
+  /* ---------------------------------------------------------
+     TYPE FAMILIES
+     --------------------------------------------------------- */
+  --f-monument: "Cinzel", "Trajan Pro", "Times New Roman", serif; /* inscriptional caps */
+  --f-serif:    "Newsreader", "Iowan Old Style", Georgia, serif;   /* literary body voice */
+  --f-mono:     "JetBrains Mono", "SFMono-Regular", Menlo, monospace; /* telemetry / UI labels */
+
+  /* TYPE SCALE (px) — architectural, generous at the top */
+  --t-micro:  11px;   /* registration marks, tick labels */
+  --t-meta:   12px;   /* mono metadata, eyebrows */
+  --t-cap:    14px;   /* captions, fine print */
+  --t-body:   17px;   /* default reading body */
+  --t-lede:   21px;   /* lead paragraph */
+  --t-h6:     16px;
+  --t-h5:     20px;
+  --t-h4:     27px;
+  --t-h3:     38px;
+  --t-h2:     58px;
+  --t-h1:     86px;
+  --t-monument: 132px; /* monumental wordmark / numerals */
+  --t-colossus: 210px; /* hero figure */
+
+  --lh-tight:  1.04;
+  --lh-snug:   1.22;
+  --lh-body:   1.6;
+  --lh-loose:  1.75;
+
+  /* TRACKING */
+  --track-monument:  0.04em;   /* inscriptional capitals breathe */
+  --track-eyebrow:   0.34em;   /* mono eyebrow, wide-set */
+  --track-label:     0.08em;
+  --track-tight:    -0.015em;
+
+  /* ---------------------------------------------------------
+     SPACE — 4px base rhythm
+     --------------------------------------------------------- */
+  --s-1: 4px;   --s-2: 8px;   --s-3: 12px;  --s-4: 16px;
+  --s-5: 24px;  --s-6: 32px;  --s-7: 48px;  --s-8: 64px;
+  --s-9: 96px;  --s-10: 128px; --s-11: 192px;
+
+  /* ---------------------------------------------------------
+     STRUCTURE — rules are signature (architecture, not chrome)
+     --------------------------------------------------------- */
+  --rule-hair:  1px;
+  --rule-thin:  1.5px;
+  --rule-mid:   2px;
+  --rule-thick: 4px;
+  --rule-bar:   10px;
+
+  /* RADII — classical = crisp. Instrument bezels go round. */
+  --r-0: 0px;     /* default — architecture is square */
+  --r-1: 2px;     /* fine softening on controls */
+  --r-2: 4px;     /* cards, inputs */
+  --r-3: 8px;     /* large panels */
+  --r-pill: 999px;
+  --r-dial: 50%;  /* gauges, seals */
+
+  /* ELEVATION — stone relief + engraved insets, never glassy */
+  --sh-flush:  0 1px 0 rgba(246,241,231,.6) inset, 0 0 0 1px var(--stone-line);
+  --sh-relief: 0 1px 0 rgba(255,255,255,.55) inset, 0 1px 2px rgba(22,20,13,.06), 0 8px 24px -12px rgba(22,20,13,.22);
+  --sh-lift:   0 1px 0 rgba(255,255,255,.5) inset, 0 18px 48px -20px rgba(22,20,13,.34);
+  --sh-engrave: inset 0 1px 2px rgba(22,20,13,.18), inset 0 -1px 0 rgba(255,255,255,.4);
+  --sh-ink:    0 24px 60px -24px rgba(0,0,0,.6);
+  --sh-gilt:   0 0 0 1px var(--bronze), 0 2px 0 var(--bronze-deep);
+
+  /* MOTION — measured, never bouncy. Stone moves with intent. */
+  --ease-stoic: cubic-bezier(0.2, 0.0, 0.0, 1.0);
+  --ease-inout: cubic-bezier(0.65, 0.0, 0.35, 1.0);
+  --dur-1: 120ms;
+  --dur-2: 220ms;
+  --dur-3: 420ms;
+  --dur-4: 720ms;
+}
+
+/* ============================================================
+   RESET / BASE
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: var(--f-serif);
+  font-size: var(--t-body);
+  line-height: var(--lh-body);
+  color: var(--fg-1);
+  background: var(--marble);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-optical-sizing: auto;
+}
+
+/* ============================================================
+   SEMANTIC TYPE  (apply classes, or copy the rules)
+   ============================================================ */
+
+/* Monumental — inscriptional Roman capitals. Wordmarks, hero, numerals. */
+.monument {
+  font-family: var(--f-monument);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: var(--track-monument);
+  line-height: var(--lh-tight);
+  color: var(--fg-1);
+}
+
+h1, .h1 {
+  font-family: var(--f-monument);
+  font-weight: 700;
+  font-size: var(--t-h1);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--track-monument);
+  text-transform: uppercase;
+  color: var(--fg-1);
+  margin: 0;
+}
+h2, .h2 {
+  font-family: var(--f-serif);
+  font-weight: 400;
+  font-size: var(--t-h2);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--track-tight);
+  color: var(--fg-1);
+  margin: 0;
+}
+h3, .h3 {
+  font-family: var(--f-serif);
+  font-weight: 500;
+  font-size: var(--t-h3);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--track-tight);
+  margin: 0;
+}
+h4, .h4 {
+  font-family: var(--f-serif);
+  font-weight: 500;
+  font-size: var(--t-h4);
+  line-height: var(--lh-snug);
+  margin: 0;
+}
+h5, .h5 {
+  font-family: var(--f-mono);
+  font-weight: 600;
+  font-size: var(--t-h5);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--track-tight);
+  margin: 0;
+}
+h6, .h6 {
+  font-family: var(--f-mono);
+  font-weight: 600;
+  font-size: var(--t-h6);
+  line-height: var(--lh-snug);
+  margin: 0;
+}
+
+/* The reading voice — literary serif, the Stoic register */
+p, .p {
+  font-family: var(--f-serif);
+  font-size: var(--t-body);
+  line-height: var(--lh-body);
+  color: var(--fg-2);
+  margin: 0 0 1em;
+  text-wrap: pretty;
+}
+.lede {
+  font-family: var(--f-serif);
+  font-weight: 300;
+  font-size: var(--t-lede);
+  line-height: var(--lh-loose);
+  color: var(--fg-1);
+  text-wrap: pretty;
+}
+/* Meditation — italic serif, the private margin-note */
+.meditation {
+  font-family: var(--f-serif);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--fg-2);
+  text-wrap: pretty;
+}
+
+/* Eyebrow — wide-tracked mono, the instrument label */
+.eyebrow {
+  font-family: var(--f-mono);
+  font-weight: 500;
+  font-size: var(--t-meta);
+  letter-spacing: var(--track-eyebrow);
+  text-transform: uppercase;
+  color: var(--fg-3);
+}
+/* Telemetry — mono data readouts */
+.telemetry {
+  font-family: var(--f-mono);
+  font-weight: 500;
+  font-size: var(--t-cap);
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
+}
+.tick {
+  font-family: var(--f-mono);
+  font-weight: 500;
+  font-size: var(--t-micro);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--fg-3);
+}
+code, .code {
+  font-family: var(--f-mono);
+  font-size: 0.92em;
+  letter-spacing: 0;
+}
+
+/* Latin seal — the motto register */
+.seal {
+  font-family: var(--f-monument);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: var(--t-meta);
+  color: var(--bronze-deep);
+}
+
+a { color: var(--bronze-deep); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+
+/* ============================================================
+   SIGNAL HELPERS
+   ============================================================ */
+.is-enhancing { color: var(--patina-deep); }
+.is-offloading { color: var(--oxide-deep); }
+.bg-enhancing { background: var(--patina); color: var(--paper); }
+.bg-offloading { background: var(--oxide); color: var(--paper); }
+
+::selection { background: var(--ink); color: var(--marble); }

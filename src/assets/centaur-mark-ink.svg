@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="Centaur mark, single ink">
+  
+  <defs>
+    <clipPath id="machineHalfMono">
+      <path d="M60,8 A52,52 0 0,1 60,112 Z"></path>
+    </clipPath>
+  </defs>
+  <path d="M60,10 A50,50 0 0,0 60,110 Z" fill="#16140D"></path>
+  <g clip-path="url(#machineHalfMono)" stroke="#16140D" stroke-width="1.4" opacity="0.8">
+    <line x1="68" y1="6" x2="68" y2="114"></line>
+    <line x1="78" y1="6" x2="78" y2="114"></line>
+    <line x1="88" y1="6" x2="88" y2="114"></line>
+    <line x1="98" y1="6" x2="98" y2="114"></line>
+    <line x1="108" y1="6" x2="108" y2="114"></line>
+  </g>
+  <circle cx="60" cy="60" r="52" fill="none" stroke="#16140D" stroke-width="2.6"></circle>
+  <line x1="60" y1="8" x2="60" y2="112" stroke="#16140D" stroke-width="1.6"></line>
+  <line x1="60" y1="60" x2="44" y2="26" stroke="#16140D" stroke-width="3" stroke-linecap="round"></line>
+  <circle cx="60" cy="60" r="5.5" fill="#16140D"></circle>
+</svg>

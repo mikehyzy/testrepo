@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="Centaur mark, gilt on ink">
+  
+  <defs>
+    <clipPath id="machineHalfGilt">
+      <path d="M60,8 A52,52 0 0,1 60,112 Z"></path>
+    </clipPath>
+  </defs>
+  <path d="M60,10 A50,50 0 0,0 60,110 Z" fill="#F2ECDD"></path>
+  <g clip-path="url(#machineHalfGilt)" stroke="#C9A86A" stroke-width="1.4" opacity="0.85">
+    <line x1="68" y1="6" x2="68" y2="114"></line>
+    <line x1="78" y1="6" x2="78" y2="114"></line>
+    <line x1="88" y1="6" x2="88" y2="114"></line>
+    <line x1="98" y1="6" x2="98" y2="114"></line>
+    <line x1="108" y1="6" x2="108" y2="114"></line>
+  </g>
+  <circle cx="60" cy="60" r="52" fill="none" stroke="#C9A86A" stroke-width="2.6"></circle>
+  <g stroke="#C9A86A" stroke-width="1.6" stroke-linecap="round">
+    <line x1="60" y1="9" x2="60" y2="17"></line>
+    <line x1="35.5" y1="15.6" x2="38.7" y2="22.8" opacity="0.7"></line>
+    <line x1="84.5" y1="15.6" x2="81.3" y2="22.8" opacity="0.7"></line>
+  </g>
+  <line x1="60" y1="8" x2="60" y2="112" stroke="#C9A86A" stroke-width="1.6"></line>
+  <line x1="60" y1="60" x2="44" y2="26" stroke="#74B895" stroke-width="3" stroke-linecap="round"></line>
+  <circle cx="60" cy="60" r="5.5" fill="#C9A86A"></circle>
+  <circle cx="60" cy="60" r="2" fill="#16140D"></circle>
+</svg>

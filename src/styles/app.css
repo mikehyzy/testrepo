@@ -1,0 +1,23 @@
+/* ============================================================
+   CENTAUR — the instrument app shell
+   Global rules ported from product.html's <style> block.
+   Imported after colors_and_type.css (the token source of truth).
+   ============================================================ */
+html, body { height: 100%; }
+body { background: var(--ink); overflow: hidden; }
+#root { height: 100vh; }
+
+@keyframes cfade { from { opacity: 0 } }
+
+*::-webkit-scrollbar { width: 11px; height: 11px; }
+*::-webkit-scrollbar-track { background: var(--marble-2); }
+*::-webkit-scrollbar-thumb { background: var(--steel); border: 3px solid var(--marble-2); }
+
+.railbtn { position: relative; }
+.railtip {
+  position: absolute; left: 56px; top: 50%; transform: translateY(-50%) translateX(-6px);
+  background: var(--ink-3); color: var(--on-ink-1); font-family: var(--f-mono); font-size: 11px;
+  letter-spacing: .06em; padding: 6px 10px; border-radius: 3px; white-space: nowrap; opacity: 0;
+  pointer-events: none; transition: all .15s var(--ease-stoic); border: 1px solid var(--ink-line); z-index: 20;
+}
+.railbtn:hover .railtip { opacity: 1; transform: translateY(-50%) translateX(0); }
